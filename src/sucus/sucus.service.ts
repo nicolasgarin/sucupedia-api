@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateSucusDto } from './dto/create-sucus.dto';
 import { UpdateSucusDto } from './dto/update-sucus.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -21,6 +21,7 @@ export class SucusService {
       }
     }
 
+    throw new InternalServerErrorException();
   }
 
   findAll() {
